@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Любители ВПН</title>
+    <style>
+        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-image: url('https://c.nau.ch/i/rQx2pb5PJOD3dLAmn7vqNZXjBoZNKRyvWql648Mz/1800/half-life-portal-2.avif'); color: white; text-align: center; }
+        .card { background: #d3612f; padding: 40px; border-radius: 20px; border: 1px solid #30363d; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .btn { background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .btn:hover { background: #ff0000; box-shadow: 0 0 15px #ff0000; }
+        .status { color: #8b949e; font-size: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1 style="color: #58a6ff;">УСТАНОВКА VPN</h1>
+        <p>Нажмите для импорта в Hiddify</p>
+        
+        <a id="importBtn" class="btn" href="#">ТРАХНУТЬ</a>
+    </div>
 
+    <script>
+        const secretRawUrl = "https://gist.githubusercontent.com/kirichin/b8fb7150d5270491574b8e539d156c13/raw/9d822abf4b9e3da8264680257299a340791e1489/gistfile1.txt"; 
+
+        const importLink = "hiddify://import/" + secretRawUrl;
+        const btn = document.getElementById('importBtn');
+        btn.href = importLink;
+
+        window.onload = function() {
+            setTimeout(() => {
+                window.location.href = importLink;
+            }, 1500);
+        };
+    </script>
+</body>
+</html>
