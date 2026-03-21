@@ -1,127 +1,267 @@
 <!DOCTYPE html>
+
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Steam - Account Details</title>
+
     <style>
+
         body { 
+
             font-family: "Tahoma", "Verdana", sans-serif; 
+
             display: flex; 
+
             align-items: center; 
+
             justify-content: center; 
+
             min-height: 100vh; 
+
             margin: 0; 
-            /* Основной фон */
+
             background: #0b0f19 url('https://c.nau.ch/i/rQx2pb5PJOD3dLAmn7vqNZXjBoZNKRyvWql648Mz/1800/half-life-portal-2.avif') no-repeat center center;
+
             background-size: cover;
+
             color: #bdbe9c; 
-            position: relative;
-            z-index: 0;
+
         }
 
-        /* Затемняющий слой */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* 0.5 - уровень затемнения */
-            z-index: -1;
-        }
+
 
         .card { 
+
             background: #4d5945; 
+
             padding: 1px; 
+
             border: 1px solid #3a4335;
+
             box-shadow: 4px 4px 15px rgba(0,0,0,0.8);
+
             width: 420px;
-            max-width: 95%; 
+
+            max-width: 95%; /* Чтобы не вылезало за края на узких экранах */
+
             user-select: none;
-            z-index: 10;
+
         }
+
+
 
         .window-header {
+
             background: #5a6952;
+
             padding: 4px 8px;
+
             font-size: 11px;
+
             font-weight: bold;
+
             color: #d1d2b7;
+
             display: flex;
+
             justify-content: space-between;
+
             border-bottom: 1px solid #3a4335;
+
         }
+
+
 
         .content {
+
             padding: 20px;
+
             border: 1px inset #3a4335; 
+
             margin: 4px;
+
             background: #4d5945;
+
         }
+
+
 
         h1 { 
+
             font-size: 13px; 
+
             margin: 0 0 10px 0; 
+
             color: #e1e2c7; 
+
             font-weight: normal;
+
         }
+
+
 
         p { 
+
             font-size: 12px; 
+
             line-height: 1.4;
+
             margin-bottom: 25px;
+
             color: #bdbe9c;
+
         }
+
+
 
         .btn-container {
+
             text-align: right;
+
             border-top: 1px solid #5a6952;
+
             padding-top: 15px;
+
         }
+
+
 
         .btn { 
+
             background: #5a6952; 
+
             color: #e1e2c7; 
+
             padding: 5px 15px; 
+
             text-decoration: none; 
+
             border: 1px solid #2d322d;
+
             border-right-color: #7a8a70;
+
             border-bottom-color: #7a8a70;
+
             font-size: 12px; 
+
             display: inline-block; 
+
             cursor: pointer;
+
         }
+
+
 
         .btn:active { 
+
             border: 1px solid #7a8a70;
+
             border-right-color: #2d322d;
+
             border-bottom-color: #2d322d;
+
         }
 
-        .btn:hover {
-            color: #ffffff;
-            background: #627359;
-        }
+
 
         .footer-info {
+
             margin-top: 15px;
+
             font-size: 9px;
+
             color: #3a4335;
+
             text-align: left;
+
             text-transform: uppercase;
+
         }
 
-        /* Адаптация фона под мобильные */
-        @media (max-width: 767px) {
-            body {
-                background-size: contain; 
-                background-position: center 15%; /* Сдвигаем картинку чуть выше, чтобы Гордон не перекрывался окном полностью */
-            }
-        }
 
-        /* Мелкие правки интерфейса для узких экранов */
+
+        /* Адаптация под совсем маленькие экраны */
+
         @media (max-width: 380px) {
-            .window-header span:last-child { display: none; }
-            .
+
+            .window-header span:last-child { display: none; } /* Прячем кнопки [ _ □ X ] если мало места */
+
+            .btn { padding: 5px 10px; font-size: 10px; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="card">
+
+        <div class="window-header">
+
+            <span>GOYDA - VPN Install</span>
+
+            <span style="letter-spacing: 2px;">_ □ X</span>
+
+        </div>
+
+        <div class="content">
+
+            <h1>УСТАНОВКА VPN</h1>
+
+            <p>Конфигурация будет автоматически импортирована через 1.5 секунды. Пожалуйста, подождите...</p>
+
+            
+
+            <div class="btn-container">
+
+                <a id="importBtn" class="btn" href="#">ТРАХНУТЬ</a>
+
+                <div class="btn" style="margin-left: 5px;" onclick="history.back()">НАХУЙ</div>
+
+            </div>
+
+
+
+            <div class="footer-info">Любители телеграмма © 2021-2026</div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        const secretRawUrl = "https://gist.githubusercontent.com/kirichin/b8fb7150d5270491574b8e539d156c13/raw/f178af1c30c240a559cdf3f3c018909f2727aea8/GOYDA.txt"; 
+
+        const importLink = "hiddify://import/" + secretRawUrl;
+
+        document.getElementById('importBtn').href = importLink;
+
+
+
+        window.onload = function() {
+
+            setTimeout(() => {
+
+                window.location.href = importLink;
+
+            }, 1500);
+
+        };
+
+    </script>
+
+</body>
+
+</html>
