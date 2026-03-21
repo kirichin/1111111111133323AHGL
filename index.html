@@ -3,25 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Любители ВПН</title>
+    <title>Steam - Account</title>
     <style>
-        body { font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-image: url('https://c.nau.ch/i/rQx2pb5PJOD3dLAmn7vqNZXjBoZNKRyvWql648Mz/1800/half-life-portal-2.avif'); color: white; text-align: center; }
-        .card { background: #d3612f; padding: 40px; border-radius: 20px; border: 1px solid #30363d; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-        .btn { background: #ff0000; color: white; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: bold; display: inline-block; margin-top: 20px; transition: 0.3s; }
-        .btn:hover { background: #ff0000; box-shadow: 0 0 15px #ff0000; }
-        .status { color: #8b949e; font-size: 12px; margin-top: 20px; }
+        /* Классический темно-зеленый фон Steam */
+        body { 
+            font-family: "Tahoma", "Verdana", sans-serif; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0; 
+            background: #3d443f; /* Цвет оригинального фона за окнами */
+            color: #bdbe9c; /* Светло-бежевый текст */
+            text-align: left;
+        }
+
+        /* Основное "окно" Steam */
+        .card { 
+            background: #4a5249; 
+            padding: 2px; /* Рамка окна */
+            border: 1px solid #2d322d;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+            width: 400px;
+            position: relative;
+        }
+
+        /* Заголовок окна */
+        .window-header {
+            background: #5a6459;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #d1d2b7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3d443f;
+        }
+
+        .content {
+            padding: 20px;
+            border: 1px inset #3d443f; /* Вдавленный эффект */
+            margin: 5px;
+            background: #4a5249;
+        }
+
+        h1 { 
+            font-size: 14px; 
+            margin: 0 0 15px 0; 
+            color: #e1e2c7; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p { 
+            font-size: 12px; 
+            margin-bottom: 20px;
+            color: #bdbe9c;
+        }
+
+        /* Стилизация классической кнопки Valve */
+        .btn { 
+            background: #5a6459; 
+            color: #e1e2c7; 
+            padding: 6px 18px; 
+            text-decoration: none; 
+            border: 1px solid #2d322d;
+            border-right-color: #7a8479;
+            border-bottom-color: #7a8479;
+            font-size: 12px; 
+            display: inline-block; 
+            transition: 0.1s;
+            cursor: pointer;
+        }
+
+        .btn:active { 
+            border: 1px solid #7a8479;
+            border-right-color: #2d322d;
+            border-bottom-color: #2d322d;
+            padding: 7px 17px 5px 19px;
+        }
+
+        .btn:hover {
+            color: #ffffff;
+            background: #616b60;
+        }
+
+        .footer-logo {
+            margin-top: 15px;
+            font-size: 10px;
+            color: #6a7269;
+            text-align: right;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div class="card">
-        <h1 style="color: #58a6ff;">УСТАНОВКА VPN</h1>
-        <p>Нажмите для импорта в Hiddify</p>
-        
-        <a id="importBtn" class="btn" href="#">ТРАХНУТЬ</a>
+        <div class="window-header">
+            <span>Steam - VPN Installation</span>
+            <span>[ _ □ X ]</span>
+        </div>
+        <div class="content">
+            <h1>Установка VPN</h1>
+            <p>Нажмите для импорта конфигурации в Hiddify. Процесс начнется автоматически через 1.5 сек.</p>
+            
+            <div style="text-align: right;">
+                <a id="importBtn" class="btn" href="#">УСТАНОВИТЬ</a>
+                <div class="btn" onclick="window.close()" style="margin-left: 5px;">ОТМЕНА</div>
+            </div>
+
+            <div class="footer-logo">VALVE &copy; 2003</div>
+        </div>
     </div>
 
     <script>
-        const secretRawUrl = "https://gist.githubusercontent.com/kirichin/b8fb7150d5270491574b8e539d156c13/raw/9d822abf4b9e3da8264680257299a340791e1489/gistfile1.txt"; 
+        const secretRawUrl = "https://gist.githubusercontent.com/kirichin/b8fb7150d5270491574b8e539d156c13/raw/f178af1c30c240a559cdf3f3c018909f2727aea8/GOYDA.txt"; 
 
         const importLink = "hiddify://import/" + secretRawUrl;
         const btn = document.getElementById('importBtn');
