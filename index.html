@@ -2,156 +2,104 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Любители VPN</title>
+    <title>Internet Explorer - Meow Edition</title>
     <style>
-        body { 
-            font-family: "Tahoma", "Verdana", sans-serif; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            /* Используем min-height: 100dvh для корректного отображения на мобилках с учетом панелей браузера */
-            min-height: 100dvh; 
-            margin: 0; 
-            
-            /* --- ИСПРАВЛЕННЫЙ БЛОК ФОНА --- */
-            background-color: #0b0f19;
-            background-image: url('https://st2.depositphotos.com/1004627/9786/i/950/depositphotos_97869450-stock-photo-a-pack-of-wolves.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Легендарные холмы Windows XP */
+            background: url('https://images.wallpapersden.com/image/download/windows-xp-bliss-original_bGlpZ2mUmZqaraWkpJRmbmdlrWlnZ2U.jpg') no-repeat center center fixed;
             background-size: cover;
-            /* Фикс для iOS: картинка не будет улетать при скролле */
-            background-attachment: scroll; 
-            
-            color: #bdbe9c; 
-            position: relative;
+            font-family: "Tahoma", sans-serif;
+            overflow: hidden;
         }
 
-        /* Затемнение фона для лучшей читаемости */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 0;
+        /* Окно в стиле Windows XP */
+        .window {
+            width: 350px;
+            background: #ece9d8;
+            border: 3px solid #0054e3;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
         }
 
-        .card { 
-            background: #4d5945; 
-            padding: 1px; 
-            border: 1px solid #3a4335;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.8);
-            width: 420px;
-            max-width: 90%; 
-            user-select: none;
-            z-index: 1; /* Поверх затемнения */
-        }
-
-        .window-header {
-            background: #5a6952;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: bold;
-            color: #d1d2b7;
+        .title-bar {
+            background: linear-gradient(180deg, #0997ff 0%, #0054e3 8%, #0054e3 92%, #0054e3 100%);
+            padding: 3px 8px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #3a4335;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
         }
 
-        .content {
+        .window-content {
             padding: 20px;
-            border: 1px inset #3a4335; 
-            margin: 4px;
-            background: #4d5945;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        h1 { 
-            font-size: 13px; 
-            margin: 0 0 10px 0; 
-            color: #e1e2c7; 
-            font-weight: normal;
+        .message {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
         }
 
-        p { 
-            font-size: 12px; 
-            line-height: 1.4;
-            margin-bottom: 25px;
-            color: #bdbe9c;
-        }
-
-        .btn-container {
-            text-align: right;
-            border-top: 1px solid #5a6952;
-            padding-top: 15px;
-        }
-
-        .btn { 
-            background: #5a6952; 
-            color: #e1e2c7; 
-            padding: 5px 15px; 
-            text-decoration: none; 
-            border: 1px solid #2d322d;
-            border-right-color: #7a8a70;
-            border-bottom-color: #7a8a70;
-            font-size: 12px; 
-            display: inline-block; 
+        /* Глянцевая кнопка OK */
+        .ok-btn {
+            padding: 5px 25px;
+            background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%);
+            border: 1px solid #707070;
+            box-shadow: inset 0 0 5px white;
             cursor: pointer;
+            outline: none;
         }
 
-        .btn:active { 
-            border: 1px solid #7a8a70;
-            border-right-color: #2d322d;
-            border-bottom-color: #2d322d;
+        .ok-btn:active {
+            background: #c1c1c1;
         }
 
-        .footer-info {
-            margin-top: 15px;
-            font-size: 9px;
-            color: #3a4335;
-            text-align: left;
-            text-transform: uppercase;
+        /* Nyan Cat */
+        #nyan {
+            position: fixed;
+            top: 40%;
+            left: -300px;
+            width: 250px;
+            z-index: 50;
+            pointer-events: none;
         }
 
-        @media (max-width: 480px) {
-            body {
-                /* На мобильных contain может смотреться лучше, если картинка квадратная */
-                background-size: cover; 
-            }
-            .window-header span:last-child { display: none; }
-            .btn { padding: 5px 10px; font-size: 11px; }
+        @keyframes fly {
+            from { left: -300px; }
+            to { left: 110%; }
+        }
+
+        /* Пузыри (Frutiger Aero) */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            box-shadow: inset -5px -5px 15px rgba(255,255,255,0.4);
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="window-header">
-            <span>GOYDA - VPN Install</span>
-            <span style="letter-spacing: 2px;">_ □ X</span>
-        </div>
-        <div class="content">
-            <h1>УСТАНОВКА VPN</h1>
-            <p>Конфигурация будет автоматически импортирована через 1.5 секунды. Пожалуйста, подождите...</p>
-            
-            <div class="btn-container">
-                <a id="importBtn" class="btn" href="#">ТРАХНУТЬ</a>
-                <div class="btn" style="margin-left: 5px;" onclick="history.back()">НАХУЙ</div>
-            </div>
+<audio id="meow-sound" src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Cat+Meow&filename=24/244342-99026400-5895-4424-8742-df290b2496d0.mp3"></audio>
 
-            <div class="footer-info">Любители телеграмма © 2021-2026</div>
-        </div>
-    </div>
-
-    <script>
-        const secretRawUrl = "https://gist.githubusercontent.com/kirichin/b8fb7150d5270491574b8e539d156c13/raw/f178af1c30c240a559cdf3f3c018909f2727aea8/GOYDA.txt"; 
-        const importLink = "hiddify://import/" + secretRawUrl;
-        document.getElementById('importBtn').href = importLink;
-
-        window.onload = function() {
-            setTimeout(() => {
-                window.location.href = importLink;
-            }, 1500);
-        };
-    </script>
-</body>
-</html>
+<div class="window">
+    <div class="title-bar">
+        <span>Windows</span>
+        <span style="background: #e043
